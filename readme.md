@@ -1,4 +1,4 @@
-<img width="1330" height="627" alt="Screenshot 2026-07-01 115943" src="https://github.com/user-attachments/assets/e9d414a4-4cd5-443f-939e-99bff8a64116" /><img width="1330" height="627" alt="Screenshot 2026-07-01 115943" src="https://github.com/user-attachments/assets/5bf3b25c-ec93-400f-b0ce-d91539d34cd9" /># 🧠 Multiple Prediction System
+# 🧠 Multiple Prediction System
 
 A Machine Learning web application built with **Flask** that combines multiple predictive models into a single platform. Users can access different prediction modules through a simple and responsive web interface.
 
