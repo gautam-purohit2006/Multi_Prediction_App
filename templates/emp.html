@@ -1,0 +1,129 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Employee Salary Prediction
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/car.css') }}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<h1>💼 Employee Salary Prediction</h1>
+
+<div class="dashboard">
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button id="menu-btn">
+                <i class="bi bi-list"></i>
+            </button>
+
+            {% if prediction != " " %}
+            <h3 style="color: green;">
+                Predicted Employee Salary is ₹ {{ prediction }}
+            </h3>
+            {% endif %}
+
+        </header>
+
+        <section class="prediction-card">
+
+            <form action="" method="POST">
+
+                <div class="form-grid">
+
+                    <!-- Age -->
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="Age" placeholder="e.g. 25" required>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="Gender" required>
+                            <option value="0">Female</option>
+                            <option value="1">Male</option>
+                        </select>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select name="Department" required>
+                            <option value="0">Product</option>
+                            <option value="1">Engineering</option>
+                            <option value="2">Sales</option>
+                            <option value="3">Marketing</option>
+                            <option value="4">HR</option>
+                            <option value="5">Finance</option>
+                            
+                        </select>
+                    </div>
+
+                    <!-- Job Title -->
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <select name="Job_Title" required>
+                            <option value="0">Manager</option>
+                            <option value="1">Analyst</option>
+                            <option value="2">Executive</option>
+                            <option value="3">Engineer</option>
+                            <option value="4">Intern</option>
+
+                        </select>
+                    </div>
+
+                    <!-- Experience Years -->
+                    <div class="form-group">
+                        <label>Experience Years</label>
+                        <input type="number" name="Experience_Years" placeholder="e.g. 5" required>
+                    </div>
+
+                    <!-- Education Level -->
+                    <div class="form-group">
+                        <label>Education Level</label>
+                        <select name="Education_Level" required>
+                            <option value="0">Bachelor's</option>
+                            <option value="1">Master's</option>
+                            <option value="2">PhD</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="predict-btn">
+
+                    <i class="bi bi-cash-coin"></i>
+
+                    Predict Salary
+
+                </button>
+
+            </form>
+
+        </section>
+
+        {% if prediction_text %}
+
+        <section class="result-card">
+
+            <h2>Prediction Result</h2>
+
+            <p>{{ prediction_text }}</p>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/car.js') }}"></script>
+
+{% endblock %}

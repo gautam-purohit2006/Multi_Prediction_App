@@ -1,0 +1,152 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Heart Prediction
+{% endblock %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/heart_prediction.css') }}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<h1>Heart Disease Prediction</h1>
+
+
+<div class="dashboard">
+
+    <!-- ================= Sidebar ================= -->
+
+    <!-- ================= Main ================= -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button id="menu-btn">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <!-- <h1>Heart Disease Prediction</h1> -->
+
+        </header>
+
+        <!-- ================= Form ================= -->
+
+        <section class="prediction-card">
+
+            <form action="{{ url_for('heart_pred') }}" method="POST">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="age" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sex</label>
+                        <select name="sex">
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Chest Pain Type</label>
+                        <input type="number" name="cp">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Resting Blood Pressure</label>
+                        <input type="number" name="trestbps">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cholesterol</label>
+                        <input type="number" name="chol">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fasting Blood Sugar</label>
+                        <input type="number" name="fbs">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rest ECG</label>
+                        <input type="number" name="restecg">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Maximum Heart Rate</label>
+                        <input type="number" name="thalach">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Exercise Induced Angina</label>
+                        <input type="number" name="exang">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Old Peak</label>
+                        <input type="number" step="0.1" name="oldpeak">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Slope</label>
+                        <input type="number" name="slope">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Major Vessels</label>
+                        <input type="number" name="ca">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Thal</label>
+                        <input type="number" name="thal">
+                    </div>
+
+                </div>
+
+                <!-- <button class="predict-btn" type="submit">
+                    <i class="bi bi-cpu-fill"></i>
+                    Predict Heart Disease
+                </button> -->
+
+                <!-- <button type="submit">Submit</button> -->
+
+                 <button class="predict-other">
+
+                    <i class="bi bi-cash-stack"></i>
+
+                    Predict Heart Disease
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- ================= Result ================= -->
+
+        {% if prediction_text %}
+
+        <section class="result-card">
+
+            <h2>Prediction Result</h2>
+
+            <p>{{ prediction_text }}</p>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/heart_prediction.js') }}"></script>
+
+{% endblock %}

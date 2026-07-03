@@ -1,0 +1,123 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Car Price Prediction
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/car.css') }}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<h1>🚗 Car Price Prediction</h1>
+
+<div class="dashboard">
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button id="menu-btn">
+                <i class="bi bi-list"></i>
+            </button>
+
+            {% if prediction != " " %}
+            <h3 style="color: green;">Predicted Selling Price is {{ prediction }} Lakhs</h3>
+            {%endif%}
+
+        </header>
+
+        <section class="prediction-card">
+
+            <form action="/car" method="POST">
+
+                <div class="form-grid">
+
+                    <!-- Year -->
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="number" name="Year" placeholder="e.g. 2020" required>
+                    </div>
+
+                    <!-- Present Price -->
+                    <div class="form-group">
+                        <label>Present Price (Lakhs)</label>
+                        <input type="number" step="0.01" name="Present_Price" required>
+                    </div>
+
+                    <!-- Kms Driven -->
+                    <div class="form-group">
+                        <label>Kilometers Driven</label>
+                        <input type="number" name="Kms_Driven" required>
+                    </div>
+
+                    <!-- Fuel Type -->
+                    <div class="form-group">
+                        <label>Fuel Type</label>
+                        <select name="Fuel_Type" required>
+                            <option value="0">Petrol</option>
+                            <option value="1">Diesel</option>
+                            <option value="2">CNG</option>
+                        </select>
+                    </div>
+
+                    <!-- Seller Type -->
+                    <div class="form-group">
+                        <label>Seller Type</label>
+                        <select name="Seller_Type" required>
+                            <option value="0">Dealer</option>
+                            <option value="1">Individual</option>
+                        </select>
+                    </div>
+
+                    <!-- Transmission -->
+                    <div class="form-group">
+                        <label>Transmission</label>
+                        <select name="Transmission" required>
+                            <option value="0">Manual</option>
+                            <option value="1">Automatic</option>
+                        </select>
+                    </div>
+
+                    <!-- Owner -->
+                    <div class="form-group">
+                        <label>Owner</label>
+                        <select name="Owner" required>
+                            <option value="0">First Owner</option>
+                            <option value="1">Second Owner</option>
+                            <option value="2">Third Owner</option>
+                            <option value="3">Fourth Owner</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="predict-btn">
+                    <i class="bi bi-car-front-fill"></i>
+                    Predict Car Price
+                </button>
+
+            </form>
+
+        </section>
+
+        {% if prediction_text %}
+
+        <section class="result-card">
+
+            <h2>Prediction Result</h2>
+
+            <p>{{ prediction_text }}</p>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/car.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Spam Mail Detection
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/spam.css') }}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<h1>📧 Spam Mail Detection</h1>
+
+<div class="dashboard">
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button id="menu-btn">
+                <i class="bi bi-list"></i>
+            </button>
+
+            {% if prediction == 1 %}
+            <h3 style="color: green;"> Ham Mail ✅ </h3>
+            {% endif %}
+
+            {% if prediction == 0 %}
+            <h3 style="color: red;"> Spam Mail 🚨 </h3>
+
+            {%endif%}
+
+        </header>
+
+        <section class="prediction-card">
+
+            <form action="/spam" method="POST">
+
+                <div class="form-group">
+
+                    <label>Email / Message</label>
+
+                    <textarea name="message" rows="12" placeholder="Paste your email or message here..."
+                        required></textarea>
+
+                </div>
+
+                <button class="predict-btn">
+
+                    <i class="bi bi-envelope-fill"></i>
+
+                    Detect Spam
+
+                </button>
+
+            </form>
+
+        </section>
+
+        {% if prediction_text %}
+
+        <section class="result-card">
+
+            <h2>Prediction Result</h2>
+
+            <p>{{ prediction_text }}</p>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/spam.js') }}"></script>
+
+{% endblock %}

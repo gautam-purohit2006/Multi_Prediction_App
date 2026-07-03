@@ -1,0 +1,117 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Diabetes Prediction
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/diabetes.css') }}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<h1>Diabetes Disease Prediction</h1>
+
+<div class="dashboard">
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button id="menu-btn">
+                <i class="bi bi-list"></i>
+            </button>
+
+            {% if prediction == 1 %}
+            <h3 style="color: red;">
+                🩺 The Person Has Diabetes
+            </h3>
+            {% endif %}
+
+            {% if prediction == 0 %}
+            <h3 style="color: green;">
+                ✅ The Person Does Not Have Diabetes
+            </h3>
+            {% endif %}
+
+        </header>
+
+        <section class="prediction-card">
+
+            <form action="  " method="POST">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Pregnancies</label>
+                        <input type="number" name="Pregnancies" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Glucose</label>
+                        <input type="number" name="Glucose" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Blood Pressure</label>
+                        <input type="number" name="BloodPressure" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skin Thickness</label>
+                        <input type="number" name="SkinThickness" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Insulin</label>
+                        <input type="number" name="Insulin" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>BMI</label>
+                        <input type="number" step="0.1" name="BMI" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Diabetes Pedigree Function</label>
+                        <input type="number" step="0.001" name="DiabetesPedigreeFunction" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="Age" required>
+                    </div>
+
+                </div>
+
+                <button class="predict-btn">
+
+                    <i class="bi bi-cpu-fill"></i>
+
+                    Predict Diabetes
+
+                </button>
+
+            </form>
+
+        </section>
+
+        {% if prediction_text %}
+
+        <section class="result-card">
+
+            <h2>Prediction Result</h2>
+
+            <p>{{ prediction_text }}</p>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/diabetes.js') }}"></script>
+
+{% endblock %}

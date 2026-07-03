@@ -1,0 +1,190 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<!-- Hero -->
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <span class="badge">
+
+            🚀 Prediction Dashboard
+
+        </span>
+
+        <h1>
+
+            Multiple Prediction <br>
+
+            Web Application
+
+        </h1>
+
+        <p>
+
+            Predict diseases, prices and text classification
+            using Machine Learning models in one dashboard.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <button onclick="location.href='/heart_prediction'">
+
+                Get Started
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <i class="bi bi-cpu-fill hero-icon"></i>
+
+    </div>
+
+</section>
+
+<!-- Statistics -->
+
+<section class="stats">
+
+    <div class="stat-card">
+
+        <i class="bi bi-heart-pulse-fill"></i>
+
+        <h2>7</h2>
+
+        <span>Prediction Models</span>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="bi bi-lightning-charge-fill"></i>
+
+        <h2>99%</h2>
+
+        <span>Accuracy</span>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="bi bi-robot"></i>
+
+        <h2>AI</h2>
+
+        <span>Machine Learning</span>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="bi bi-speedometer2"></i>
+
+        <h2>Fast</h2>
+
+        <span>Prediction</span>
+
+    </div>
+
+</section>
+
+<!-- Models -->
+
+<h2 class="section-title">
+
+    Prediction Models
+
+</h2>
+
+<section class="models">
+
+
+    <div class="model-card" onclick="location.href='/diabetes'">
+
+        <i class="bi bi-droplet-half"></i>
+
+        <h3>Diabetes</h3>
+
+        <p>Diabetes prediction model.</p>
+
+    </div>
+
+    <div class="model-card" onclick="location.href='/car'">
+
+        <i class="bi bi-car-front-fill"></i>
+
+        <h3>Car Price</h3>
+
+        <p>Estimate used car price.</p>
+
+    </div>
+
+    <div class="model-card" onclick="location.href='/gold'">
+
+        <i class="bi bi-cash-stack"></i>
+
+        <h3>Gold Price</h3>
+
+        <p>Predict gold market price.</p>
+
+    </div>
+
+    <div class="model-card" onclick="location.href='/spam'">
+
+        <i class="bi bi-envelope-fill"></i>
+
+        <h3>Spam Detection</h3>
+
+        <p>Detect spam emails instantly.</p>
+
+    </div>
+
+
+    <div class="model-card" onclick="location.href='/heart_prediction'">
+
+        <i class="bi bi-heart-pulse-fill"></i>
+
+        <h3>Heart Prediction</h3>
+
+        <p>Predict heart disease risk.</p>
+
+    </div>
+
+    <div class="model-card" onclick="location.href='/House_prediction'">
+
+        <i class="bi bi-buildings-fill"></i>
+
+        <h3>House Prediction</h3>
+
+        <p>Predict House Price.</p>
+
+    </div>
+
+    <div class="model-card" onclick="location.href='/emp'">
+
+        <i class="bi bi-person-workspace"></i>
+
+        <h3>Employee Salary </h3>
+
+        <p>Predict Employee Salary .</p>
+
+    </div>
+
+</section>
+
+{% endblock %}

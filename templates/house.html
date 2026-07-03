@@ -1,0 +1,165 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+House Price Prediction
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/house.css') }}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<h1>🏠 House Price Prediction</h1>
+
+<div class="dashboard">
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button id="menu-btn">
+                <i class="bi bi-list"></i>
+            </button>
+
+            {% if prediction != " " %}
+            <h3 style="color:green;">
+                Predicted House Price is {{ prediction }}
+            </h3>
+            {% endif %}
+
+        </header>
+
+        <section class="prediction-card">
+
+            <form action="" method="POST">
+
+                <div class="form-grid">
+
+                    <!-- 1. Area -->
+                    <div class="form-group">
+                        <label>Area (sq. ft.)</label>
+                        <input type="number" name="area" placeholder="e.g. 4500" required>
+                    </div>
+
+                    <!-- 2. Bedrooms -->
+                    <div class="form-group">
+                        <label>Bedrooms</label>
+                        <input type="number" name="bedrooms" placeholder="e.g. 3" required>
+                    </div>
+
+                    <!-- 3. Bathrooms -->
+                    <div class="form-group">
+                        <label>Bathrooms</label>
+                        <input type="number" name="bathrooms" placeholder="e.g. 2" required>
+                    </div>
+
+                    <!-- 4. Stories -->
+                    <div class="form-group">
+                        <label>Stories</label>
+                        <input type="number" name="stories" placeholder="e.g. 2" required>
+                    </div>
+
+                    <!-- 5. Main Road -->
+                    <div class="form-group">
+                        <label>Main Road</label>
+                        <select name="mainroad" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <!-- 6. Guest Room -->
+                    <div class="form-group">
+                        <label>Guest Room</label>
+                        <select name="guestroom" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <!-- 7. Basement -->
+                    <div class="form-group">
+                        <label>Basement</label>
+                        <select name="basement" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <!-- 8. Hot Water Heating -->
+                    <div class="form-group">
+                        <label>Hot Water Heating</label>
+                        <select name="hotwaterheating" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <!-- 9. Air Conditioning -->
+                    <div class="form-group">
+                        <label>Air Conditioning</label>
+                        <select name="airconditioning" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <!-- 10. Parking -->
+                    <div class="form-group">
+                        <label>Parking Spaces</label>
+                        <input type="number" name="parking" placeholder="e.g. 2" min="0" required>
+                    </div>
+
+                    <!-- 11. Preferred Area -->
+                    <div class="form-group">
+                        <label>Preferred Area</label>
+                        <select name="prefarea" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <!-- 12. Furnishing Status -->
+                    <div class="form-group">
+                        <label>Furnishing Status</label>
+                        <select name="furnishingstatus" required>
+                            <option value="0">Unfurnished</option>
+                            <option value="1">Semi-Furnished</option>
+                            <option value="2">Furnished</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="predict-btn">
+
+                    <i class="bi bi-house-door-fill"></i>
+
+                    Predict House Price
+
+                </button>
+
+            </form>
+
+        </section>
+
+        {% if prediction_text %}
+
+        <section class="result-card">
+
+            <h2>Prediction Result</h2>
+
+            <p>{{ prediction_text }}</p>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/house.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Gold Price Prediction
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/gold.css') }}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<h1>💰 Gold Price Prediction</h1>
+
+<div class="dashboard">
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button id="menu-btn">
+                <i class="bi bi-list"></i>
+            </button>
+
+            {% if prediction != " " %}
+            <h3 style="color: green;">Predicted Gold Price is {{ prediction }} </h3>
+            {%endif%}
+
+        </header>
+
+        <section class="prediction-card">
+
+            <form action="" method="POST">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>SPX</label>
+                        <input type="number" step="0.0000001" name="SPX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>USO</label>
+                        <input type="number" step="0.0000001" name="USO" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SLV</label>
+                        <input type="number" step="0.0000001" name="SLV" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>EUR/USD</label>
+                        <input type="number" step="0.0000001" name="EURUSD" required>
+                    </div>
+
+                </div>
+
+                <button class="predict-btn">
+
+                    <i class="bi bi-cash-stack"></i>
+
+                    Predict Gold Price
+
+                </button>
+
+            </form>
+
+        </section>
+
+        {% if prediction_text %}
+
+        <section class="result-card">
+
+            <h2>Prediction Result</h2>
+
+            <p>{{ prediction_text }}</p>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/gold.js') }}"></script>
+
+{% endblock %}
