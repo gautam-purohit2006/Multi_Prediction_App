@@ -236,7 +236,7 @@ This project is licensed under the MIT License.
 
 Gautam Purohit
 
-GitHub: https://github.com/gautam-purohit2006/Multi_Prediction_App.git
+GitHub: https://github.com/gautam-purohit2006
 
 LinkedIn: https://www.linkedin.com/in/gautam-purohit-618383315/
 
