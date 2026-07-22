@@ -152,4 +152,10 @@ def Emp_salary():
     print(result)
     return render_template("emp.html",active_page="emp" , prediction=result)
 
-app.run(debug=True)
+# app.run(debug=True)
+
+import os
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
