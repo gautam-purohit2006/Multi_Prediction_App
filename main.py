@@ -143,8 +143,8 @@ def Emp_salary():
 
         arr = np.array([list(map(float, request.form.values()))])
 
-        # data = [[24,0,4,1,3,1]]
-
+        # data = [[24,0,4,1,3,1]]           
+    
         predict_data = emp_prediction(arr)
         result = round(predict_data)
 
